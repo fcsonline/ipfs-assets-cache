@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
   var hash = db[url];
 
   if (hash) {
-    return res.send(200, hash);
+    return res.status(200).send(hash);
   }
 
   request(url, function (error, response, body) {
@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
 
         db[url] = hash;
 
-        return res.send(200, hash);
+        return res.status(200).send(hash);
       });
     }
   });
